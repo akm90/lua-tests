@@ -19,6 +19,20 @@ a:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
 /run cp=GetComboPoints(«player»); p=UnitPower(«player»); se=({GetSpellInfo(«Полоснуть»)})[4]; if not (((vSR==0 or vSR-vRip<0.5) and cp>0 and p<25) or cp>4) then if p>se then CastSpellByName(«Полоснуть») end end
 /run StaticPopup_Hide(«MACRO_ACTION_FORBIDDEN»);
 
+1. Если у вас меньше 40% HP и готова Дубовая кожа , использовать её
+2. Если тигриное неистовство готово и у вас менее 30энергии использовать его.
+3. Если у вас есть хотябы 1комбопоинт и минимум 25энергии , Дикий рев отсутствует , разорвать упадет не скоро тогда сделать Дикий рев
+4. Если у вас есть 5комбопоинтов:
+а). Если разорвать отсутствует и у вас есть энергия на него то использовать
+б). Иначе, ждем получения 100энергии до его спадения..:
+1. Если отсутствует бафф Увечья использовать его
+2. Если отсутствует глубокая рана сделать её
+3. Иначе – полоснуть
+5. Если на цели не висит лунного огня использовать его
+6. Если не ждем энергии на дикий рев или разорвать и надо сделать мангл, делаем его
+7. Если не ждем энергию на Дикий рев или Разорвать но отсутствует глубокая рана то используем её.
+8. Если не ждем энергию на Дикий рев или Разорвать и висит мангл и глубокая рана , то использовать полоснуть
+
 #showtooltip Звериная атака - кошка
 -- VARIABLES
 /run ucf=UnitCastingInfo cst=CastSpellByName cd=GetSpellCooldown buf=UnitBuff dbuf=UnitDebuff p="player" t="target" range=IsSpellInRange spd=GetUnitSpeed hp=UnitHealth("player")/UnitHealthMax("player") mana=UnitPower("player")/UnitPowerMax("player")
