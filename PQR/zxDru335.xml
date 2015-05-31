@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DRUID>
+	<Ability>
+		<Name>Гнев</Name>
+		<Default>false</Default>
+		<SpellID>48461</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48461), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+and UnitDebuffID(&amp;quot;target&amp;quot;,48463,&amp;quot;player&amp;quot;) ~= nil --лунный дот
+--and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+--and PQR_IsCastingSpell(5179) ~= true
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Лунный огонь</Name>
+		<Default>false</Default>
+		<SpellID>48463</SpellID>
+		<Actions/>
+		<Lua>--DEBUFF MODE
+if IsSpellInRange(GetSpellInfo(48463), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and PQR_IsCastingSpell(8929) ~= true
+--and UnitDebuffID(&amp;quot;target&amp;quot;,5196,&amp;quot;player&amp;quot;) ~= nil
+and UnitDebuffID(&amp;quot;target&amp;quot;,48463,&amp;quot;player&amp;quot;) == nil
+--RUN MODE
+or IsSpellInRange(GetSpellInfo(48463), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and PQR_IsCastingSpell(48463) ~= true
+--and UnitDebuffID(&amp;quot;target&amp;quot;,5196,&amp;quot;player&amp;quot;) ~= nil
+and GetUnitSpeed(&amp;quot;player&amp;quot;)&amp;gt;0 
+-- EOF
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Знак Дикой Природы</Name>
+		<Default>false</Default>
+		<SpellID>48469</SpellID>
+		<Actions/>
+		<Lua>local _,_,_,_,_,_,DruBufTimeLeft = UnitBuffID(&amp;quot;player&amp;quot;, 48469) 
+--if (DruBufTimeLeft==nil) 
+if UnitBuffID(&amp;quot;player&amp;quot;, 48469) == nil
+or (DruBufTimeLeft - GetTime())&amp;lt;300
+and  not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+then
+return true
+end</Lua>
+		<RecastDelay>55</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Омоложение</Name>
+		<Default>false</Default>
+		<SpellID>48441</SpellID>
+		<Actions/>
+		<Lua>if UnitBuffID(&amp;quot;player&amp;quot;, 48441) == nil
+--and not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+and UnitHealth(&amp;quot;player&amp;quot;)/UnitHealthMax(&amp;quot;player&amp;quot;) &amp;lt; 0.75
+then
+return true
+end</Lua>
+		<RecastDelay>33</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Шипы</Name>
+		<Default>false</Default>
+		<SpellID>53307</SpellID>
+		<Actions/>
+		<Lua>local _,_,_,_,_,_,ThornsTimeLeft = UnitBuffID(&amp;quot;player&amp;quot;, 53307) 
+--if (ThornsTimeLeft==nil) 
+if UnitBuffID(&amp;quot;player&amp;quot;, 53307) == nil
+or (ThornsTimeLeft - GetTime())&amp;lt;60
+and  not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+then
+return true
+end</Lua>
+		<RecastDelay>55</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Гнев Деревьев</Name>
+		<Default>false</Default>
+		<SpellID>53308</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(53308), &amp;quot;target&amp;quot;) ==1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitDebuffID(&amp;quot;target&amp;quot;,53308,&amp;quot;player&amp;quot;) == nil
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and PQR_IsCastingSpell(53308) ~= true
+--and not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>test</Name>
+		<Default>false</Default>
+		<SpellID>0</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(5176), &amp;quot;target&amp;quot;) == 1
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and PQR_IsCastingSpell(5176) ~= true
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>START</Name>
+		<Default>false</Default>
+		<SpellID>0</SpellID>
+		<Actions/>
+		<Lua>if UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+then true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Гнев START</Name>
+		<Default>false</Default>
+		<SpellID>5177</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(5177), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+--and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+--and PQR_IsCastingSpell(5176) ~= true
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Восстановление</Name>
+		<Default>false</Default>
+		<SpellID>48443</SpellID>
+		<Actions/>
+		<Lua>if UnitBuffID(&amp;quot;player&amp;quot;, 48443) == nil
+and UnitBuffID(&amp;quot;player&amp;quot;, 48441) ~= nil --омоложение
+--and not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+and UnitHealth(&amp;quot;player&amp;quot;)/UnitHealthMax(&amp;quot;player&amp;quot;) &amp;lt; 0.25
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+then return true end</Lua>
+		<RecastDelay>33</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Гнев2</Name>
+		<Default>false</Default>
+		<SpellID>6780</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(6780), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+and UnitDebuffID(&amp;quot;target&amp;quot;,8921,&amp;quot;player&amp;quot;) ~= nil
+--and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+--and PQR_IsCastingSpell(6780) ~= true
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Звездный Огонь</Name>
+		<Default>false</Default>
+		<SpellID>48465</SpellID>
+		<Actions/>
+		<Lua>-- СТАРТ
+if IsSpellInRange(GetSpellInfo(48465), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+and not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+-- КОРНИ
+or IsSpellInRange(GetSpellInfo(48465), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and GetUnitSpeed(&amp;quot;player&amp;quot;)==0
+and UnitDebuffID(&amp;quot;target&amp;quot;,53308,&amp;quot;player&amp;quot;) ~= nil --kорни
+--and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+--and PQR_IsCastingSpell(8951) ~= true
+then
+return true
+end</Lua>
+		<RecastDelay>500</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Полоснуть</Name>
+		<Default>false</Default>
+		<SpellID>48572</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48572), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;60
+and GetComboPoints(&amp;quot;player&amp;quot;, &amp;quot;target&amp;quot;) &amp;lt; 5
+and UnitDebuffID(&amp;quot;target&amp;quot;, 49800, &amp;quot;player&amp;quot;) ~= nil ----razorvat***
+and UnitDebuffID(&amp;quot;target&amp;quot;, 48574, &amp;quot;player&amp;quot;) ~= nil ---глубокая рана***
+--NO INVIZ
+and UnitBuffID(&amp;quot;player&amp;quot;, 5215) == nil
+and not PQR_NotBehindTarget() 
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;59
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Цапнуть</Name>
+		<Default>false</Default>
+		<SpellID>48570</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48570), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and GetComboPoints(&amp;quot;player&amp;quot;, &amp;quot;target&amp;quot;) &amp;lt; 5
+----глубокая рана***
+and UnitDebuffID(&amp;quot;target&amp;quot;, 48574, &amp;quot;player&amp;quot;) ~= nil
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;34
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Разорвать</Name>
+		<Default>false</Default>
+		<SpellID>49800</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(49800), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and GetComboPoints(&amp;quot;player&amp;quot;, &amp;quot;target&amp;quot;) &amp;gt; 2
+and UnitDebuffID(&amp;quot;target&amp;quot;, 49800, &amp;quot;player&amp;quot;) == nil
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;29
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Огонь</Name>
+		<Default>false</Default>
+		<SpellID>16857</SpellID>
+		<Actions/>
+		<Lua>--DEBUFF MODE
+if IsSpellInRange(GetSpellInfo(16857), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and UnitDebuffID(&amp;quot;target&amp;quot;,16857,&amp;quot;player&amp;quot;) == nil
+--and UnitBuffID(&amp;quot;player&amp;quot;, 5215) == nil
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Кошка</Name>
+		<Default>false</Default>
+		<SpellID>768</SpellID>
+		<Actions/>
+		<Lua>if UnitBuffID(&amp;quot;player&amp;quot;, 768) ~= nil 
+then return false
+else 
+return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Хватка природы</Name>
+		<Default>false</Default>
+		<SpellID>53312</SpellID>
+		<Actions/>
+		<Lua>if GetSpellCooldown(&amp;quot;Хватка природы&amp;quot;)==0
+and IsAltKeyDown()
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Глубокая рана</Name>
+		<Default>false</Default>
+		<SpellID>48574</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48574), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and UnitDebuffID(&amp;quot;target&amp;quot;, 48574, &amp;quot;player&amp;quot;) == nil
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;34
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Тигриное неистовство</Name>
+		<Default>false</Default>
+		<SpellID>50212</SpellID>
+		<Actions/>
+		<Lua>if GetSpellCooldown(&amp;quot;Тигриное неистовство&amp;quot;)==0
+-- and IsShiftKeyDown() ==true
+-- and UnitDebuffID(&amp;quot;target&amp;quot;, 48574, &amp;quot;player&amp;quot;) ~= nil ----глубокая рана***
+-- and UnitDebuffID(&amp;quot;target&amp;quot;, 49800, &amp;quot;player&amp;quot;) ~= nil ----разорвать***
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;lt;33
+and (CheckInteractDistance(&amp;quot;target&amp;quot;,3))
+and  UnitBuffID(&amp;quot;player&amp;quot;, 50334) == nil --bers
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Порыв</Name>
+		<Default>false</Default>
+		<SpellID>9821</SpellID>
+		<Actions/>
+		<Lua>if GetSpellCooldown(&amp;quot;Порыв&amp;quot;)==0
+and IsControlKeyDown()
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Снятие проклятия</Name>
+		<Default>false</Default>
+		<SpellID>2782</SpellID>
+		<Actions/>
+		<Lua>local buff = { 30108, 34914, 74562, 74792 }
+local group = &amp;quot;party&amp;quot;
+local members = GetNumPartyMembers()
+if GetNumRaidMembers() &amp;gt; 0 then
+  group = &amp;quot;raid&amp;quot;
+  members = GetNumRaidMembers()
+end
+
+for i = 0, members, 1 do
+  if i==0 then mem = &amp;quot;player&amp;quot; else mem = group..tostring(i) end
+  if UnitInRange(mem) and UnitIsDeadOrGhost(mem) == nil then
+   local candispel = 1
+   for k,v in ipairs(buff) do
+    if UnitDebuffID(mem,v) then candispel = nil end
+   end
+   local j = 1
+   local debuff,_,_,count,bufftype,dur = UnitDebuff(mem, j)
+   while debuff do
+    if (bufftype == &amp;quot;Curse&amp;quot;) and dur &amp;gt; 1 and candispel then
+     CastSpellByID(2782,mem)
+     return true
+    end
+    j = j + 1;
+    debuff,_,_,count,bufftype,duration = UnitDebuff(mem, j)
+    end
+  end
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Custom</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Устранение яда</Name>
+		<Default>false</Default>
+		<SpellID>2893</SpellID>
+		<Actions/>
+		<Lua>local buff = { 30108, 34914, 74562, 74792 }
+local group = &amp;quot;party&amp;quot;
+local members = GetNumPartyMembers()
+if GetNumRaidMembers() &amp;gt; 0 then
+  group = &amp;quot;raid&amp;quot;
+  members = GetNumRaidMembers()
+end
+
+for i = 0, members, 1 do
+  if i==0 then mem = &amp;quot;player&amp;quot; else mem = group..tostring(i) end
+  if UnitInRange(mem) and UnitIsDeadOrGhost(mem) == nil then
+   local candispel = 1
+   for k,v in ipairs(buff) do
+    if UnitDebuffID(mem,v) then candispel = nil end
+   end
+   local j = 1
+   local debuff,_,_,count,bufftype,dur = UnitDebuff(mem, j)
+   while debuff do
+    if (bufftype == &amp;quot;Poison&amp;quot;) and dur &amp;gt; 1 and candispel and UnitBuffID(mem, 2893) == nil then
+     CastSpellByID(2893,mem)
+     return true
+    end
+    j = j + 1;
+    debuff,_,_,count,bufftype,duration = UnitDebuff(mem, j)
+    end
+  end
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Custom</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Накинуться</Name>
+		<Default>false</Default>
+		<SpellID>48579</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48579), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and GetComboPoints(&amp;quot;player&amp;quot;, &amp;quot;target&amp;quot;) &amp;lt; 5
+--NOCOMBAT
+--and not UnitAffectingCombat(&amp;quot;player&amp;quot;)
+--INVIZ
+and UnitBuffID(&amp;quot;player&amp;quot;, 5215) ~= nil
+and not PQR_NotBehindTarget() 
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;59
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Свирепый укус</Name>
+		<Default>false</Default>
+		<SpellID>48577</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48577), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and GetComboPoints(&amp;quot;player&amp;quot;, &amp;quot;target&amp;quot;) &amp;gt; 2
+and UnitDebuffID(&amp;quot;target&amp;quot;, 49800, &amp;quot;player&amp;quot;) ~= nil ----разорвать***
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;34
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Звериная атака</Name>
+		<Default>false</Default>
+		<SpellID>49376</SpellID>
+		<Actions/>
+		<Lua>--DEBUFF MODE
+if IsSpellInRange(GetSpellInfo(49376), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+--and UnitDebuffID(&amp;quot;target&amp;quot;,16857,&amp;quot;player&amp;quot;) == nil
+--and UnitBuffID(&amp;quot;player&amp;quot;, 5215) == nil
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;9
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>Дубовая кожа</Name>
+		<Default>false</Default>
+		<SpellID>22812</SpellID>
+		<Actions/>
+		<Lua>if GetSpellCooldown(&amp;quot;Дубовая кожа&amp;quot;)==0
+and IsAltKeyDown()
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Увечье</Name>
+		<Default>false</Default>
+		<SpellID>48565</SpellID>
+		<Actions/>
+		<Lua>if IsSpellInRange(GetSpellInfo(48565), &amp;quot;target&amp;quot;) == 1
+and UnitExists(&amp;quot;target&amp;quot;)  ==1
+and UnitIsVisible(&amp;quot;target&amp;quot;) ==1
+and UnitCastingInfo(&amp;quot;player&amp;quot;)==nil
+and UnitChannelInfo(&amp;quot;player&amp;quot;) == nil
+and GetComboPoints(&amp;quot;player&amp;quot;, &amp;quot;target&amp;quot;) &amp;lt; 5
+and UnitDebuffID(&amp;quot;target&amp;quot;, 48574, &amp;quot;player&amp;quot;) ~= nil ----глубокая рана***
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;33
+then return true end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Target</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+	<Ability>
+		<Name>C:Bers</Name>
+		<Default>false</Default>
+		<SpellID>50334</SpellID>
+		<Actions/>
+		<Lua>if GetSpellCooldown(&amp;quot;Берсерк&amp;quot;)==0
+-- and IsShiftKeyDown() ==true
+----глубокая рана***
+--and UnitDebuffID(&amp;quot;target&amp;quot;, 48574, &amp;quot;player&amp;quot;) ~= nil
+----разорвать***
+--and UnitDebuffID(&amp;quot;target&amp;quot;, 49800, &amp;quot;player&amp;quot;) ~= nil
+and UnitPower(&amp;quot;player&amp;quot; , 3)&amp;gt;16
+and (CheckInteractDistance(&amp;quot;target&amp;quot;,3))
+and  UnitBuffID(&amp;quot;player&amp;quot;, 50213) == nil --tiger fury
+and IsShiftKeyDown()
+then
+return true
+end</Lua>
+		<RecastDelay>0</RecastDelay>
+		<Target>Player</Target>
+		<CancelChannel>False</CancelChannel>
+		<LuaBefore/>
+		<LuaAfter/>
+	</Ability>
+</DRUID>
