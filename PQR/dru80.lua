@@ -148,3 +148,117 @@ and UnitDebuffID("target", 48574, "player") ~= nil
 and UnitPower("player" , 3)>34
 then return true end
 ------------------------
+--48443-C-vostanowlenie
+if UnitBuffID("player", 48443) == nil
+and UnitBuffID("player", 48441) ~= nil --омоложение
+--and not UnitAffectingCombat("player")
+and UnitHealth("player")/UnitHealthMax("player") < 0.25
+and GetUnitSpeed("player")==0
+then return true end
+----------------------
+--48461--T--gnev
+if IsSpellInRange(GetSpellInfo(48461), "target") == 1
+and UnitExists("target")  ==1
+and UnitIsVisible("target") ==1
+and GetUnitSpeed("player")==0
+and UnitDebuffID("target",48463,"player") ~= nil --лунный дот
+--and UnitCastingInfo("player")==nil
+--and PQR_IsCastingSpell(5179) ~= true
+then
+return true
+end
+---------------------
+--53308--T--gnev tree
+if IsSpellInRange(GetSpellInfo(53308), "target") ==1
+and UnitExists("target")  ==1
+and UnitDebuffID("target",53308,"player") == nil
+and UnitIsVisible("target") ==1
+and GetUnitSpeed("player")==0
+and UnitCastingInfo("player")==nil
+and PQR_IsCastingSpell(53308) ~= true
+--and not UnitAffectingCombat("player")
+then return true end
+--------------------
+--22812--P--skin hard
+if GetSpellCooldown("Дубовая кожа")==0
+and IsAltKeyDown()
+then
+return true
+end
+------------------
+--48465--T--start fire
+-- СТАРТ
+if IsSpellInRange(GetSpellInfo(48465), "target") == 1
+and UnitExists("target")  ==1
+and UnitIsVisible("target") ==1
+and GetUnitSpeed("player")==0
+and not UnitAffectingCombat("player")
+-- КОРНИ
+or IsSpellInRange(GetSpellInfo(48465), "target") == 1
+and UnitExists("target")  ==1
+and UnitIsVisible("target") ==1
+and GetUnitSpeed("player")==0
+and UnitDebuffID("target",53308,"player") ~= nil --kорни
+--and UnitCastingInfo("player")==nil
+--and PQR_IsCastingSpell(8951) ~= true
+then
+return true
+end
+--------------------
+--48469--C--baff dru
+local _,_,_,_,_,_,DruBufTimeLeft = UnitBuffID("player", 48469) 
+--if (DruBufTimeLeft==nil) 
+if UnitBuffID("player", 48469) == nil
+or (DruBufTimeLeft - GetTime())<300
+and  not UnitAffectingCombat("player")
+then
+return true
+end
+----------------
+--48463--T--moonfire
+--DEBUFF MODE
+if IsSpellInRange(GetSpellInfo(48463), "target") == 1
+and UnitExists("target")  ==1
+and UnitIsVisible("target") ==1
+and UnitCastingInfo("player")==nil
+and UnitChannelInfo("player") == nil
+and PQR_IsCastingSpell(8929) ~= true
+--and UnitDebuffID("target",5196,"player") ~= nil
+and UnitDebuffID("target",48463,"player") == nil
+--RUN MODE
+or IsSpellInRange(GetSpellInfo(48463), "target") == 1
+and UnitExists("target")  ==1
+and UnitIsVisible("target") ==1
+and UnitCastingInfo("player")==nil
+and UnitChannelInfo("player") == nil
+and PQR_IsCastingSpell(48463) ~= true
+--and UnitDebuffID("target",5196,"player") ~= nil
+and GetUnitSpeed("player")>0 
+-- EOF
+then return true end
+------------------
+--48441--C--omolojenie
+if UnitBuffID("player", 48441) == nil
+--and not UnitAffectingCombat("player")
+and UnitHealth("player")/UnitHealthMax("player") < 0.75
+then
+return true
+end
+---------------
+--53312--P--hvatka prirodi
+if GetSpellCooldown("Хватка природы")==0
+and IsAltKeyDown()
+then
+return true
+end
+-------------
+--53307--P--shipi
+local _,_,_,_,_,_,ThornsTimeLeft = UnitBuffID("player", 53307) 
+--if (ThornsTimeLeft==nil) 
+if UnitBuffID("player", 53307) == nil
+or (ThornsTimeLeft - GetTime())<60
+and  not UnitAffectingCombat("player")
+then
+return true
+end
+-----------
