@@ -1,27 +1,27 @@
 ---Dru Cat 80 lvl 335a
 50334 Берсерк
---48574--T--wound
---49376--T--jump
---768--P--cat
---48579--T-nakinutsa
---16857--T--fire
---48572--T--polosnut
---33357--P--run
---49800--T--razorwat
---48577--T--ukus
---50213--P--fury
---48566--T--uvechye
---48570--T--Capnut
---48443-C-vostanowlenie
---48461--T--gnev
---53308--T--gnev tree
---22812--P--skin hard
---48465--T--start fire
---48469--C--baff dru
---48463--T--moonfire
---48441--C--omolojenie
---53312--P--hvatka prirodi
---53307--P--shipi
+48574   --T--wound
+49376   --T--jump
+768     --P--cat
+48579   --T-nakinutsa
+16857   --T--fire
+48572   --T--polosnut
+33357   --P--run
+49800   --T--razorwat
+48577   --T--ukus
+50213   --P--fury
+48566   --T--uvechye
+48570   --T--Capnut
+48443   -C-vostanowlenie
+48461   --T--gnev
+53308   --T--gnev tree
+22812   --P--skin hard
+48465   --T--start fire
+48469   --C--baff dru
+48463   --T--moonfire
+48441   --C--omolojenie
+53312   --P--hvatka prirodi
+53307   --P--shipi
 -------------------------
 50334 Берсерк T
 -------------------------
