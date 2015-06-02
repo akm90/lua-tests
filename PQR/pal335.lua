@@ -1,49 +1,3 @@
-if IsSpellInRange(GetSpellInfo(44572), "target") == 1
-and UnitExists("target")  ==1
-and UnitIsVisible("target") ==1
-and GetSpellCooldown("Глубокая заморозка")==0
-and IsShiftKeyDown()
-then
-if UnitDebuffID("target",27088,"player") ~= nil
-or UnitDebuffID("target",33395,"player") ~= nil
-or UnitDebuffID("target",12494,"player") ~= nil
-or UnitBuffID("player", 44545) ~= nil
-then return true
-end
-end
------------------
-if GetSpellCooldown("Берсерк")==0
--- and IsShiftKeyDown() ==true
-----глубокая рана***
---and UnitDebuffID("target", 48574, "player") ~= nil
-----разорвать***
---and UnitDebuffID("target", 49800, "player") ~= nil
-and UnitPower("player" , 3)>16
-and (CheckInteractDistance("target",3))
-and  UnitBuffID("player", 50213) == nil --tiger fury
-and IsShiftKeyDown()
-then
-return true
-end
---------------
-if IsSpellInRange(GetSpellInfo(48574), "target") == 1
-and UnitExists("target")  ==1
-and UnitIsVisible("target") ==1
-and UnitCastingInfo("player")==nil
-and UnitChannelInfo("player") == nil
-and UnitDebuffID("target", 48574, "player") == nil
-and UnitPower("player" , 3)>34
-then return true 
-end
-------------
-if IsSpellInRange(GetSpellInfo(48806), "target") == 1
-and UnitExists("target")  ==1
-and UnitIsVisible("target") ==1
-and UnitHealth("target")/UnitHealthMax("target")<0.2
-then return true 
-end
-and GetSpellCooldown("Глубокая заморозка")==0
--------------
 53385 Божественная буря
 48806 Молот гнева
 35395 Удар воина Света
@@ -75,6 +29,7 @@ and GetSpellCooldown("Глубокая заморозка")==0
 633 Возложение рук
 --------------
 21084 Печать праведности
+--------------
 local _,_,_,_,_,_,SealPTimeLeft = UnitBuffID("player", 21084) 
 if UnitBuffID("player", 21084) == nil
 or (SealPTimeLeft - GetTime())<300
@@ -93,8 +48,9 @@ and UnitPower("player")>200
 then 
 return true 
 end
-------------------
+-------------------
 53385 Божественная буря
+-------------------
 if CheckInteractDistance("target", 3)
 and UnitExists("target")  ==1
 and UnitIsVisible("target") ==1
@@ -105,6 +61,7 @@ return true
 end
 -------------------
 35395 Удар воина Света
+-------------------
 if IsSpellInRange(GetSpellInfo(35395), "target") == 1
 and UnitExists("target")  ==1
 and UnitIsVisible("target") ==1
@@ -113,8 +70,9 @@ and UnitPower("player")>200
 then 
 return true 
 end
----------------
+-------------------
 48801 Экзорцизм
+-------------------
 if IsSpellInRange(GetSpellInfo(48801), "target") == 1
 and UnitExists("target")  ==1
 and UnitIsVisible("target") ==1
@@ -124,8 +82,9 @@ and UnitBuffID("player", 59578) ~= nil
 then 
 return true 
 end
----------------
+-------------------
 48819 Освящение
+-------------------
 if CheckInteractDistance("target", 3)
 and UnitExists("target")  ==1
 and UnitIsVisible("target") ==1
@@ -134,8 +93,9 @@ and UnitPower("player")>2000
 then 
 return true 
 end
------------------
+-------------------
 48806 Молот гнева
+-------------------
 if IsSpellInRange(GetSpellInfo(48806), "target") == 1
 and UnitExists("target")  ==1
 and UnitIsVisible("target") ==1
@@ -145,8 +105,9 @@ and UnitHealth("target")/UnitHealthMax("target")<0.2
 then 
 return true 
 end
-----------
+-------------------
 31884 Гнев карателя
+-------------------
 local _,_,_,GrCount= UnitBuffID("player", 71187) 
 if CheckInteractDistance("target", 3)
 and UnitExists("target")  ==1
@@ -159,14 +120,17 @@ and GetSpellCooldown("Гнев карателя")==0
 then
 return true
 end
-------------
+-------------------
 54428 Святая клятва
+-------------------
 if UnitPower("player")<2000
 and UnitAffectingCombat("player")
 then
 return true
 end
------------
+-------------------
+Cleanse solo/party/raid
+-------------------
 #CLEANSE RAID/PARTY [OPTIONAL]
 /run 
 local w=nil; local m=0; 
@@ -179,16 +143,18 @@ and d[7]>m then w=tt; m=d[7]
 end end end end; 
 if w~=nil then RunMacroText("/cast [@"..w.."] Cleanse") 
 end;
----------------
+-------------------
 1152 Омовение
+-------------------
 for i=1,40 do local DType= {UnitDebuff("player",i)}
 if DType[5] == "Poison"
 or DType[5] == "Disease"
 then return true
 end
 end
------------
+-------------------
 633 Возложение рук
+-------------------
 if GetSpellCooldown("Возложение рук")==0
 and UnitAffectingCombat("player")
 and not UnitDebuffID("player",25771)
@@ -197,6 +163,7 @@ then return true
 end
 ----------------
 1022 Длань защиты
+-------------------
 if GetSpellCooldown("Длань защиты")==0
 and UnitAffectingCombat("player")
 and not UnitDebuffID("player",25771)
@@ -205,6 +172,7 @@ then return true
 end
 ----------------
 498 Божественная защита
+-------------------
 if GetSpellCooldown("Божественная защита")==0
 and UnitAffectingCombat("player")
 and not UnitDebuffID("player",25771)
